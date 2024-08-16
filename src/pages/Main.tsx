@@ -1,30 +1,18 @@
 import styled from '@emotion/styled';
-import { useDispatch, useSelector } from 'react-redux';
 
-import type { CounterState } from '../store/counterSlice.ts';
-import { decrement } from '../store/counterSlice.ts';
-import { increment } from '../store/counterSlice.ts';
+import { ErrorTodo1, ErrorTodo2 } from '../components';
+import ErrorBoundary from '../components/common/ErrorBoundary.tsx';
+import { ErrorTodo3 } from '../components/errorTodo3.tsx';
 
 function Main() {
-  const counter = useSelector((state: CounterState) => state.counter.value);
-  const dispatch = useDispatch();
-
   return (
-    <>
+    <ErrorBoundary>
       <S.Container>
-        Counter = {counter}
-        <button
-          aria-label='Increment value'
-          onClick={() => dispatch(increment())}>
-          increment
-        </button>
-        <button
-          aria-label='Decrement  value'
-          onClick={() => dispatch(decrement())}>
-          decrement
-        </button>
+        <ErrorTodo1 />
+        <ErrorTodo2 />
+        <ErrorTodo3 />
       </S.Container>
-    </>
+    </ErrorBoundary>
   );
 }
 
@@ -32,7 +20,7 @@ export { Main };
 
 const S = {
   Container: styled.div`
-    color: blue;
+    color: black;
     font-family: 'Pretendard';
   `,
 };
